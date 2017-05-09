@@ -1,33 +1,28 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+#include <stdio.h>
 
-# Precompiled Headers
-*.gch
-*.pch
+int main()
+{
+    int n, array[1000], c, d, t;
+    printf("Por favor ingresa el numero de elementos que quieres que contenga el arreglo: \n");
+    scanf("%d", &n);
+    printf("ingresa %d elementos sin importar el orden: \n", n);
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+    for (c = 0; c < n; c++) {
+        scanf("%d", &array[c]);
+    }
+for (c = 1 ; c <= n - 1; c++) {
+    d = c;
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
+    while (d > 0 && array[d] < array[d-1]){
+        t = array[d];
+        array[d]   = array[d-1];
+        array[d-1] = t;
+        d--;
+    }
+}
+printf("elementos organizados:\n");
+for (c = 0; c <= n - 1; c++){
+    printf("%d\n", array[c]);
+}
+return 0;
+}
